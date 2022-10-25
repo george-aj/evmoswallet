@@ -58,7 +58,6 @@ class PrivateKeyBase:
     Returns:
         PrivateKey: The object representing the private key.
     """
-
     @staticmethod
     def from_b58check(private_key):
         """ Decodes a Base58Check encoded private-key.
@@ -192,7 +191,6 @@ class PublicKeyBase:
         PublicKey: The object representing the public key.
 
     """
-
     @staticmethod
     def from_bytes(key_bytes):
         """ Generates a public key object from a byte (or hex) string.
@@ -802,7 +800,6 @@ class Signature:
     Returns:
         sig (Signature): A Signature object.
     """
-
     @staticmethod
     def from_der(der):
         """ Decodes a Signature that was DER-encoded.
@@ -1015,7 +1012,6 @@ class HDKey:
     Returns:
         HDKey: An HDKey object.
     """
-
     @staticmethod
     def from_b58check(key):
         """ Decodes a Base58Check encoded key.

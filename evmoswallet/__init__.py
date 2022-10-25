@@ -8,7 +8,6 @@ from evmoswallet.eth.ethereum import HDPrivateKey
 
 
 class Wallet:
-
     def __init__(self, seed, algo='ethsecp256k1') -> None:
         if algo == 'ethsecp256k1':
             master_key = HDPrivateKey.master_key_from_mnemonic(seed)
@@ -29,5 +28,16 @@ class Wallet:
 
     def sign(self, msg: bytes) -> bytes:
         key = coincurve.PrivateKey(self.private_key)
+
         nonce = (lib.secp256k1_nonce_function_rfc6979, ffi.NULL)
-        return key.sign_recoverable(msg, hasher=None, custom_nonce=nonce)
+
+        
+        #return key.sign_recoverable(msg, hasher=None, custom_nonce=nonce)
+        #from web3.auto import w3
+        #return w3.eth.account.sign_message(msg, private_key=self.private_key)
+
+        from bitcoin import ecdsa_raw_sign
+        from bitcoin import der_encode_sig
+        from evmoswallet.eth.ethereum import sha3_256
+
+        return bytes(der_encode_sig(*ecdsa_raw_sign(sha3_256(msg).digest(), self.private_key)), 'utf-8')

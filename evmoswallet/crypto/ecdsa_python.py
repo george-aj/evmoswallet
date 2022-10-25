@@ -82,7 +82,6 @@ class ECPoint:
     Returns:
         ECPoint: the point formed by (x, y, z) on curve.
     """
-
     @staticmethod
     def from_affine():
         """ Converts from an Affine representation to a Jacobian.
@@ -154,7 +153,6 @@ class ECPointJacobian(ECPoint):
     Returns:
         ECPointAffine: the point formed by (x, y) on curve.
     """
-
     @staticmethod
     def from_affine(affine_point):
         """ Converts from an affine point to a Jacobian representation.
@@ -323,7 +321,6 @@ class ECPointAffine(ECPoint):
     Returns:
         ECPointAffine: the point formed by (x, y) on curve.
     """
-
     @staticmethod
     def from_affine(affine_point):
         """ A no-op since the point is already affine.
@@ -496,7 +493,6 @@ class EllipticCurve(EllipticCurveBase):
         h (int): The curve co-factor.
         hash_function (function): The function to use for hashing messages.
     """
-
     @staticmethod
     def _extended_gcd(aa, bb):
         # https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm

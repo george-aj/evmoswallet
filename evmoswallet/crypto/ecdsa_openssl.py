@@ -26,7 +26,6 @@ class ECPointAffine:
     Returns:
         ECPointAffine: the point formed by (x, y) on curve.
     """
-
     def __init__(self, curve, x, y, infinity=False):
         self.x = x
         self.y = y
