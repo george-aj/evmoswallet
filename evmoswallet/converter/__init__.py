@@ -35,8 +35,9 @@ def eth_to_bech32(wallet: str, prefix: str) -> str:
         bech32_address = bech32_encode(prefix, bech32_words, Encoding.BECH32)
     except Exception:
         return None
-    if len(bech32_address) != 44:
-        return None
+    #TODO: figure out the length range that an address can be
+    #if len(bech32_address) != 44:
+    #    return None
 
     return bech32_address
 

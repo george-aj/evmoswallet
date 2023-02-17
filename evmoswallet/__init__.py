@@ -26,6 +26,7 @@ class Wallet:
             # TODO: sopport for secp256k1
             raise NotImplementedError(f'{algo} is not supported!')
 
+    #TODO Doesn't work on Windows
     def sign(self, msg: bytes) -> bytes:
         key = coincurve.PrivateKey(self.private_key)
         nonce = (lib.secp256k1_nonce_function_rfc6979, ffi.NULL)
