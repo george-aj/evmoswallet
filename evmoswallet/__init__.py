@@ -2,7 +2,7 @@ import coincurve
 from coincurve._libsecp256k1 import ffi
 from coincurve._libsecp256k1 import lib
 
-from evmoswallet.converter import bech32_to_eth
+from evmoswallet.converter import eth_to_bech32
 from evmoswallet.eth.ethereum import HDKey
 from evmoswallet.eth.ethereum import HDPrivateKey
 
@@ -20,7 +20,7 @@ class Wallet:
 
             self.eth_address = keys[-1].public_key.address()
             self.private_key = bytes.fromhex(keys[-1]._key.to_hex())
-            self.evmos_address = bech32_to_eth(self.eth_address, prefix)
+            self.evmos_address = eth_to_bech32(self.eth_address, prefix)
             self.public_key = keys[-1].public_key.compressed_bytes
         else:
             # TODO: sopport for secp256k1
